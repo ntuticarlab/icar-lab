@@ -91,47 +91,38 @@
     <div class="autocar-title d-flex align-items-center" >
       <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
         <h2>AutoCar Platform</h2>
-        <nav class="breadcrumbs">
-          <ol>
-            <li><a href="index.html">Home</a></li>
-            <li>Platform</li>
-          </ol>
-        </nav>
       </div>
     </div>
 
     <section id="projects" class="projects page-background">
       <div class="container" data-aos="fade-up">
 
+        <!--  Explorer 探勘者號 -->
         <div class="row vehicle-card">
-           
-          <!-- 左側縮圖選單 -->
-      
+          
           <div class="col-lg-4 col-md-12 mb-4 text-center">
             <h3 class="mb-3">Explorer 探勘者號</h3>
 
-            <!-- 車輛圖片展示 -->
             <img src="assets/img/kitHardware.png" class="img-fluid mb-4" alt="Explorer Main Image" style="max-width: 100%; height: auto;">
 
-            <!-- 影片切換按鈕（橫向排列） -->
-            <div class="d-flex justify-content-center gap-3">
+            <!-- 影片切換按鈕 -->
+            <div class="d-flex justify-content-center gap-2 gap-md-3">
               <div class="video-btn" data-video="assets/img/auto car/AutoCar_Frontview_6floor_8shape.mp4">
-                <img src="assets/img/video.png" alt="駕駛視角" style="width: 80px; height: 80px; object-fit: cover;">
+                <img src="assets/img/video.png" alt="駕駛視角">
                 <div><strong>駕駛視角</strong></div>
               </div>
-              <div class="video-btn" data-video="assets/img/auto car/Red_Auto_B1_.mp4">
-                <img src="assets/img/video.png" alt="駕駛視角2" style="width: 80px; height: 80px; object-fit: cover;">
+              <div class="video-btn active" data-video="assets/img/auto car/Red_Auto_B1_.mp4">
+                <img src="assets/img/video.png" alt="駕駛視角2">
                 <div><strong>客觀視角</strong></div>
               </div>
               <div class="video-btn" data-image="assets/img/Explorer_platform.png">
-                <img src="assets/img/layout.png" alt="硬體配置" style="width: 80px; height: 80px; object-fit: cover;">
+                <img src="assets/img/layout.png" alt="硬體配置">
                 <div><strong>硬體配置</strong></div>
               </div>
             </div>
           </div>
 
 
-          <!-- 右側影片播放區 -->
           <div class="col-lg-8 col-md-12">
             <div class="video-wrapper">
               <video id="main-video" class="img-fluid" controls autoplay muted loop playsinline>
@@ -145,33 +136,30 @@
           </div>
         </div>
 
-        <!-- 第二組 Hercules 武仙號排版區 -->
+        <!--  Hercules 武仙號 -->
         <div class="row vehicle-card">
-          <!-- 左側圖片與按鈕 -->
+
           <div class="col-lg-4 col-md-12 mb-4 text-center">
             <h3 class="mb-3">Hercules 6X6 武仙號</h3>
 
-            <!-- 車輛圖片展示（固定不變） -->
             <img src="assets/img/greycarPlatform.jpg" class="img-fluid mb-4" alt="Hercules Main Image" style="max-width: 100%; height: auto;">
 
-            <!-- 三個切換按鈕 -->
-            <div class="d-flex justify-content-center gap-3">
+            <div class="d-flex justify-content-center gap-2 gap-md-3">
               <div class="video-btn" data-video="assets/img/auto car/AutoCar_Frontview_b1floor_graycar.mp4">
-                <img src="assets/img/video.png" alt="駕駛視角" style="width: 80px; height: 80px; object-fit: cover;">
+                <img src="assets/img/video.png" alt="駕駛視角">
                 <div><strong>駕駛視角</strong></div>
               </div>
-              <div class="video-btn" data-video="assets/img/auto car/Grey_Auto_B1_.mp4">
-                <img src="assets/img/video.png" alt="客觀視角" style="width: 80px; height: 80px; object-fit: cover;">
+              <div class="video-btn active" data-video="assets/img/auto car/Grey_Auto_B1_.mp4">
+                <img src="assets/img/video.png" alt="客觀視角">
                 <div><strong>客觀視角</strong></div>
               </div>
               <div class="video-btn" data-image="assets/img/Hercules6X6_platform.png">
-                <img src="assets/img/layout.png" alt="硬體配置" style="width: 80px; height: 80px; object-fit: cover;">
+                <img src="assets/img/layout.png" alt="硬體配置">
                 <div><strong>硬體配置</strong></div>
               </div>
             </div>
           </div>
 
-          <!-- 右側影片或圖片展示區 -->
           <div class="col-lg-8 col-md-12">
             <div class="video-wrapper text-center">
               <video id="hercules-video" class="img-fluid" controls autoplay muted loop playsinline style="display: block;">
@@ -217,7 +205,7 @@
     <div class="footer-legal text-center position-relative">
        <div class="container">
          <div class="copyright">
-           The Web Developed by Mian Chen | Powered by Bootstrap
+           The Web Developed by Mina Chen | Powered by Bootstrap
          </div>
        </div>
     </div>
@@ -242,30 +230,45 @@
 
 
   <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+<script src="assets/js/main.js"></script>
   <script>
-  document.querySelectorAll('.video-btn').forEach(item => {
-    item.addEventListener('click', () => {
-      const videoSrc = item.getAttribute('data-video');
-      const imageSrc = item.getAttribute('data-image');
+    document.addEventListener('DOMContentLoaded', function() {
+      const videoBtns = document.querySelectorAll('.video-btn');
 
-      const parentRow = item.closest('.row');
-      const video = parentRow.querySelector('video');
-      const image = parentRow.querySelector('img[id$="image"]');
+      videoBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          
+          // 找到當前按鈕所屬的車輛區塊 (vehicle-card)
+          const parentCard = this.closest('.vehicle-card');
+          
+          // ==========================================
+          // 1. 處理按鈕視覺狀態 (Active class)
+          // ==========================================
+          parentCard.querySelectorAll('.video-btn').forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
 
-      if (videoSrc) {
-        // 切換影片
-        video.querySelector('source').src = videoSrc;
-        video.load();
-        video.style.display = 'block';
-        video.play();
-        image.style.display = 'none';
-      } else if (imageSrc) {
-        image.src = imageSrc;
-        image.style.display = 'block';
-        video.style.display = 'none';
-        video.pause();
-      }
+          // ==========================================
+          // 2. 處理媒體內容切換 (影片 vs 圖片)
+          // ==========================================
+          const mainVideo = parentCard.querySelector('video');
+          const mainImage = parentCard.querySelector('.video-wrapper img'); 
+
+          const videoSrc = this.getAttribute('data-video');
+          const imageSrc = this.getAttribute('data-image');
+
+          if (videoSrc) {
+            mainVideo.querySelector('source').src = videoSrc;
+            mainVideo.load();
+            mainVideo.style.display = 'block';
+            mainImage.style.display = 'none';
+            mainVideo.play();
+          } else if (imageSrc) {
+            mainImage.src = imageSrc;
+            mainImage.style.display = 'block';
+            mainVideo.style.display = 'none';
+            mainVideo.pause(); 
+          }
+        });
       });
     });
   </script>

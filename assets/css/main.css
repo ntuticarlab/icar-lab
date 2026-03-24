@@ -1178,7 +1178,7 @@ section {
     font-size: 2.75rem;
     max-width: 100%;
     margin: 0px 0 20px 0;
-    text-align: left;
+    text-align: center;
   }
 }
 
@@ -1395,6 +1395,7 @@ section {
 @media (min-width: 768px) and (max-width: 1024px) {
   .team .member {
     margin: 0 auto;
+    margin-bottom: 40px;
     flex: 0 0 33.3333%; /* 每行顯示三個成員 */
     max-width: 33.3333%; /* 每行顯示三個成員 */
   }
@@ -1403,6 +1404,7 @@ section {
 @media (max-width: 576px) {
   .team .member {
     margin: 0 auto;
+    margin-bottom: 40px;
     flex: 0 0 50%; /* 每行顯示兩個成員 */
     max-width: 50%; /* 每行顯示兩個成員 */
   }
@@ -1501,21 +1503,22 @@ section {
 }
 
 /*--------------------------------------------------------------
-# AutoCar Title
+# AutoCar Title 
 --------------------------------------------------------------*/
-.autocar-title{
-  min-height: 30vh;
+.autocar-title {
+  min-height: 25vh;
   position: relative;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  margin-bottom: -100px;
+  margin-bottom: -100px; 
 }
 
 .autocar-title h2 {
   font-size: 56px;
   font-weight: 500;
   margin-bottom: 10px;
+  transition: 0.3s; 
 }
 
 .autocar-title .breadcrumbs ol {
@@ -1538,6 +1541,82 @@ section {
   display: inline-block;
   padding-right: 10px;
   color: color-mix(in srgb, var(--default-color), transparent 20%);
+}
+
+.video-btn {
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 12px;
+  border: 2px solid transparent;
+  opacity: 0.5;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column; /* 讓圖片在上方，文字在下方 */
+  align-items: center;    /* 內容水平置中 */
+  justify-content: center;
+  width: 110px;           /* 給定按鈕一個範圍，避免它隨意變形 */
+}
+
+/* 按鈕的 Hover 與 Active 狀態 */
+.video-btn:hover {
+  opacity: 0.8;
+  transform: translateY(-3px);
+  background-color: #f8f9fa;
+}
+.video-btn.active {
+  opacity: 1;
+  transform: translateY(0);
+  background-color: #e9ecef;
+  border: 2px solid #0d6efd;
+  box-shadow: inset 0 3px 5px rgba(0,0,0,0.1);
+}
+
+
+.video-btn img {
+  width: 80px !important;
+  height: 80px !important;
+  min-width: 80px !important; 
+  object-fit: cover !important;
+  margin-bottom: 8px; 
+}
+
+/* 文字設定 */
+.video-btn div {
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .autocar-title h2 {
+    font-size: clamp(24px, 8vw, 32px); 
+    white-space: nowrap; 
+    margin-bottom: 0;  
+  }
+
+  .autocar-title {
+    min-height: auto;        
+    padding: 10px 0 10px 0;  
+    margin-bottom: 0;
+  }
+  .video-btn {
+    width: 80px;
+    padding: 5px;
+  }
+
+  .video-btn img {
+    width: 50px !important;
+    height: 50px !important;
+    min-width: 50px !important;
+  }
+
+  .video-btn div {
+    font-size: 13px; 
+    margin-top: 5px;
+  }
+  section.projects {
+    padding-top: 20px !important;    /* 原本是 80px，縮小成 20px */
+    padding-bottom: 20px !important; 
+  }
 }
 
 /*--------------------------------------------------------------
@@ -1980,6 +2059,30 @@ section {
 
 .video-btn img:hover {
   border-color: #194059; /* 滑鼠移上時高亮邊框 */
+}
+
+.video-btn {
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 12px;
+  border: 2px solid transparent; 
+  opacity: 0.5;
+  transition: all 0.3s ease;
+}
+
+/* 懸停狀態：滑鼠移上去時稍微亮起並往上浮 */
+.video-btn:hover {
+  opacity: 0.8;
+  transform: translateY(-3px);
+  background-color: #f8f9fa;
+}
+
+.video-btn.active {
+  opacity: 1;
+  transform: translateY(0); /* 取消懸停的上浮 */
+  background-color: #e9ecef;
+  border: 2px solid #5f98c1; /* 藍色邊框強調當前狀態，你可以換成你的主題色 */
+  box-shadow: inset 0 3px 5px rgba(0,0,0,0.1); /* 內陰影營造凹陷感 */
 }
 
 /* 整體頁面底色（類似灰白） */
